@@ -1,0 +1,24 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+//@import 'variables';
+@import 'footer';
+@import 'common';
+@import 'carousel';
+@import 'title';
+
+// Bootstrap
+@import '~bootswatch/dist/journal/variables';
+@import '~bootstrap/scss/bootstrap';
+@import '~bootswatch/dist/journal/bootswatch';
+
+// Font Awesome
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~font-awesome-animation/dist/font-awesome-animation.css';
+
+// Slick-Carousel
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
