@@ -37,25 +37,37 @@
                     <a class="nav-link" href="#">ホーム<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="#popular-radio">人気の番組</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#on-air-radio">On Air</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#award-radio">2020年アニラジアワード受賞作品</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#new-radio">最近放送開始した番組</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">リアルタイム掲示板</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">特集</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">サイトについて</a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="#">特集</a>--}}
+{{--                </li>--}}
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="#">サイトについて</a>--}}
+{{--                </li>--}}
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">検索</button>
-            </form>
+{{--            <form class="form-inline my-2 my-lg-0">--}}
+{{--                <input class="form-control mr-sm-2" type="text" placeholder="Search">--}}
+{{--                <button class="btn btn-secondary my-2 my-sm-0" type="submit">検索</button>--}}
+{{--            </form>--}}
         </div>
     </nav>
 </header>
 
 <main role="main">
-    <div class="popular-radio mt-4">
+    <div class="popular-radio mt-5" id="popular-radio">
         <div class="container">
             <div class="__title1 py-3">
                 <h2 class="hs__headline"><i class="fas fas fa-burn faa-horizontal animated my-base-color"></i> 人気の番組</h2>
@@ -69,7 +81,7 @@
             </ul>
         </div>
     </div>
-    <div class="on-air-radio py-5">
+    <div class="on-air-radio py-5" id="on-air-radio">
         <div class="container">
             <div class="__title1 py-3">
                 <h2 class="hs__headline"><i class="fas fa-broadcast-tower faa-bounce animated my-base-color"></i> On Air（文化放送、A&G、ラジオ大阪、音泉）</h2>
@@ -83,7 +95,7 @@
             </ul>
         </div>
     </div>
-    <div class="award-radio py-5">
+    <div class="award-radio py-5" id="award-radio">
         <div class="container">
             <div class="__title1 py-3">
                 <h2 class="hs__headline"><i class="fas fa-crown faa-bounce animated my-base-color"></i> 2020年アニラジアワード受賞作品</h2>
@@ -97,7 +109,7 @@
             </ul>
         </div>
     </div>
-    <div class="new-radio py-5">
+    <div class="new-radio py-5" id="new-radio">
         <div class="container">
             <div class="__title1 py-3">
                 <h2 class="hs__headline"><i class="fas fa-child faa-bounce animated my-base-color"></i> 最近放送開始した番組</h2>
@@ -111,11 +123,6 @@
             </ul>
         </div>
     </div>
-
-
-    <style>
-
-    </style>
 </main>
 
 <!-- フッター -->
@@ -130,6 +137,7 @@
 </footer>
 
 <script>
+    // カルーセル
 	$('.slider').slick({
 		centerMode: true,
 		centerPadding: '80px',
@@ -157,6 +165,24 @@
 				}
 			}
 		]
+	});
+
+	// スムーズスクロール
+	$(function(){
+		// #で始まるアンカーをクリックした場合に処理
+		$('a[href^="#"]').click(function() {
+			// スクロールの速度
+			var speed = 500; // ミリ秒
+			// アンカーの値取得
+			var href= $(this).attr("href");
+			// 移動先を取得
+			var target = $(href == "#" || href == "" ? 'html' : href);
+			// 移動先を数値で取得
+			var position = target.offset().top;
+			// スムーススクロール
+			$('body,html').animate({scrollTop:position}, speed, 'swing');
+			return false;
+		});
 	});
 </script>
 </body>
