@@ -37,7 +37,7 @@
                     <a class="nav-link" href="#">ホーム<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#popular-radio">人気の番組</a>
+                    <a class="nav-link" href="#popular-radio">おすすめの番組</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#on-air-radio">On Air</a>
@@ -58,19 +58,34 @@
 {{--                    <a class="nav-link" href="#">サイトについて</a>--}}
 {{--                </li>--}}
             </ul>
-{{--            <form class="form-inline my-2 my-lg-0">--}}
-{{--                <input class="form-control mr-sm-2" type="text" placeholder="Search">--}}
-{{--                <button class="btn btn-secondary my-2 my-sm-0" type="submit">検索</button>--}}
-{{--            </form>--}}
         </div>
     </nav>
 </header>
 
 <main role="main">
-    <div class="popular-radio mt-5" id="popular-radio">
+    <div class="top-content" style="margin-top: 7%">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <div class="d-flex flex-column">
+                    <p style="text-align: center; font-weight: bold; font-size: 120%">声優ラジオ検索</p>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" id="search_box" type="text" placeholder="声優またはラジオの名前入れてね">
+                        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">検索</button>
+                    </form>
+                    <div class="d-flex justify-content-center my-2">
+                        <a href="#" class="btn-border-bottom">
+                            <span>番組一覧</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popular-radio py-4" id="popular-radio">
         <div class="container">
             <div class="__title1 py-3">
-                <h2 class="hs__headline"><i class="fas fas fa-burn faa-horizontal animated my-base-color"></i> 人気の番組</h2>
+                <h2 class="hs__headline"><i class="fas fas fa-burn faa-horizontal animated my-base-color"></i> おすすめの番組</h2>
             </div>
             <ul class="slider">
                 <li><a href="#"><img src="https://picsum.photos/id/112/300/300" alt="image01"></a></li>
