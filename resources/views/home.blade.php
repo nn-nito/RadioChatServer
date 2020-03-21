@@ -65,6 +65,16 @@
         </div>
     </div>
 
+    <div class="container">
+        <div class="d-flex justify-content-center py-4">
+            <a href="#" class="text-decoration-none">
+                <div class="button2" style="text-align: center">
+                    リアルタイム掲示板
+                </div>
+            </a>
+        </div>
+    </div>
+
     <div class="popular-radio py-4" id="popular-radio">
         <div class="container">
             <div class="__title1 py-3">
