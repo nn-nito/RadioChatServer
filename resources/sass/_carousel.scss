@@ -1,13 +1,14 @@
 .slider {
   //max-width: 100%;
 }
-.slider img {
+.slider card {
+  object-fit: cover;
   box-shadow: 0 3px 0px 0 rgba(0, 0, 0, 0.25);
   cursor: pointer;
   transition: all 0.3s ease 0s;
 }
 
-.slider img:hover {
+.slider card:hover {
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
   transform: translateY(-0.3000em);
 }
