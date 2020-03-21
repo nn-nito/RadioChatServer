@@ -19,7 +19,7 @@
                     <a class="nav-link" href="#">ホーム<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#popular-radio">おすすめの番組</a>
+                    <a class="nav-link" href="#popular-radio">人気の番組</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#on-air-radio">On Air</a>
@@ -78,7 +78,7 @@
     <div class="popular-radio py-4" id="popular-radio">
         <div class="container">
             <div class="__title1 py-3">
-                <h2 class="hs__headline"><i class="fas fas fa-burn faa-horizontal animated my-base-color"></i> おすすめの番組</h2>
+                <h2 class="hs__headline"><i class="fas fas fa-burn faa-horizontal animated my-base-color"></i> 人気の番組</h2>
             </div>
             <ul class="slider">
                 {{-- 本渡上陸作戦 --}}
