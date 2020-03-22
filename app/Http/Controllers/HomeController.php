@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\ProgramFetcher;
+use App\Http\Services\PopularProgramFetcher;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 /**
  * Class HomeController
@@ -12,11 +14,14 @@ use Illuminate\Http\Request;
  */
 class HomeController extends Controller
 {
+	/**
+	 * @return Factory|View
+	 */
     public function index()
 	{
-		$fetcher = ProgramFetcher::create();
-		$programs = $fetcher->fetchAll();
+		$fetcher = PopularProgramFetcher::create();
+		$popular_programs = $fetcher->fetchAll();
 
-		return view('home', compact('programs'));
+		return view('home', compact('popular_programs'));
 	}
 }

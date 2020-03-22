@@ -8,7 +8,8 @@
 
 namespace Tests\Feature;
 
-use App\Http\Handlers\ProgramHandler;
+use App\Http\Handlers\PopularProgramHandler;
+use App\PopularProgram;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Tests\CreatesApplication;
@@ -26,9 +27,9 @@ class HomeControllerTest extends TestCase
 	use RefreshDatabase;
 
 	/**
-	 * @var ProgramHandler
+	 * @var PopularProgramHandler
 	 */
-	private $program_handler;
+	private $popular_program_handler;
 
 
 
@@ -41,7 +42,7 @@ class HomeControllerTest extends TestCase
 		$this->createApplication();
 		DB::beginTransaction();
 
-		$this->program_handler = new ProgramHandler();
+		$this->popular_program_handler = new PopularProgramHandler();
 	}
 
 
@@ -61,9 +62,9 @@ class HomeControllerTest extends TestCase
 
 
 	/**
-	 * @testa
+	 * @test
 	 */
-	public function index_人気番組をすべて取得できた場合ステータスコードが200であるべき()
+	public function index_人気番組を取得できなかった場合でもステータスコードが200であるべき()
 	{
 		$response = $this->get(route('home'));
 
@@ -71,5 +72,25 @@ class HomeControllerTest extends TestCase
 		$response->assertOk();
 		// Viewが意図するものであるか
 		$response->assertViewIs('home');
+	}
+
+
+
+	/**
+	 * @test
+	 */
+	public function index_人気番組をすべて取得できた場合ステータスコードが200であるべき()
+	{
+		factory(PopularProgram::class, 2)->create();
+
+		$response = $this->get(route('home'));
+
+		// ステータスコードが200であるか
+		$response->assertOk();
+		// Viewが意図するものであるか
+		$response->assertViewIs('home');
+		// Viewに渡すデータが正しいか
+		$popular_programs = $this->popular_program_handler->fetchAll();
+		$response->assertViewHas('popular_programs', $popular_programs);
 	}
 }
