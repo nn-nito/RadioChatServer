@@ -73,4 +73,17 @@ class ProgramHandlerTest extends TestCase
 			$this->assertSame($expects[$key]['name'], $result->name);
 		}
 	}
+
+
+
+	/**
+	 * @test
+	 */
+	public function すべて取得_紐づくデータが存在しない場合データを取得できないべき()
+	{
+		$results = $this->program_handler->fetchAll();
+
+		// 検証
+		$this->assertCount(0, $results);
+	}
 }
