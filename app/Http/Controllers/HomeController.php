@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Handlers\ProgramHandler;
+use App\Http\Services\ProgramFetcher;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 /**
  * Class HomeController
@@ -15,6 +14,9 @@ class HomeController extends Controller
 {
     public function index()
 	{
-		return view('home');
+		$fetcher = ProgramFetcher::create();
+		$programs = $fetcher->fetchAll();
+
+		return view('home', compact('programs'));
 	}
 }
