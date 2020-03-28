@@ -20,8 +20,8 @@ class HomeController extends Controller
     public function index()
 	{
 		$fetcher = PopularProgramFetcher::create();
-		$popular_programs = $fetcher->fetchAll();
+		[$popular_programs, $performers] = $fetcher->fetchAllByProgramIdAndJoin();
 
-		return view('home', compact('popular_programs'));
+		return view('home', compact('popular_programs', 'performers'));
 	}
 }

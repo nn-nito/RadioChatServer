@@ -10,7 +10,6 @@ $factory->define(Program::class, function (Faker $faker) {
 		'name' => $faker->name,
 		'url' => $faker->imageUrl(),
 		'filename' => $faker->randomElement(),
-		'title' => $faker->title,
 		'info' => $faker->randomElement(),
 		'account' => $faker->randomElement(),
 	];
