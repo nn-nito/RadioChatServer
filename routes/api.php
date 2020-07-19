@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// チャット書き込み
+Route::post('/chat', 'ChatController@write')->name('chat_write');
+// チャット取得
+Route::get('/chat', 'ChatController@get')->name('chat_get');
