@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
 
 		// リアルタイムチャット
 		$this->call(ChatsTableSeeder::class);
+		$this->call(RadiosTableSeeder::class);
 	}
 }
