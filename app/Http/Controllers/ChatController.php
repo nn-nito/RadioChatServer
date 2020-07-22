@@ -19,10 +19,10 @@ class ChatController extends Controller
 	 * チャットを受け取りDBに格納
 	 *
 	 * @param Request $request
-	 * @return array
+	 * @return JsonResponse
 	 * @throws Exception
 	 */
-	public function write(Request $request): array
+	public function write(Request $request): JsonResponse
 	{
 		$params = [];
 		$params['user_id'] = $request->post('user_id');
@@ -34,16 +34,14 @@ class ChatController extends Controller
 		DB::beginTransaction();
 		try {
 			// チャット書き込み
-			ChatCreator::create()->execute($params);
+			$response = ChatCreator::create()->execute($params);
 			DB::commit();
 		} catch (Exception $exception) {
 			DB::rollBack();
 			throw new $exception;
 		}
 
-		return [
-			'is_success' => true,
-		];
+		return response()->json($response);
 	}
 
 
