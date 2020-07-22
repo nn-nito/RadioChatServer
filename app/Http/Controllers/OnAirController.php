@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -11,9 +12,12 @@ class OnAirController extends Controller
 {
 	/**
 	 * 放送中のラジオすべて取得
+	 *
+	 * @param Request $request
+	 * @return JsonResponse
 	 */
-    public function getAll()
+    public function getAll(Request $request): JsonResponse
 	{
-
+		// day_of_week,current_time
 	}
 }
