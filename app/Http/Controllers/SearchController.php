@@ -19,7 +19,9 @@ class SearchController extends Controller
 	 */
 	public function get(Request $request): JsonResponse
 	{
-		$title = $request->get('title', '');
+		$title = $request->get('title');
+		$title = $title ?? '';
+
 		$responses = RadioFetcher::create()->searchAllRadioByTitle($title);
 
 		return response()->json($responses);
