@@ -26,3 +26,5 @@ Route::get('/chat', 'ChatController@get')->name('chat_get');
 Route::get('/on_air', 'OnAirController@getAll')->name('on_air_get_all');
 // ラジオを検索し取得
 Route::get('search', 'SearchController@get')->name('search_radio');
+// ラジオ局すべて取得
+Route::get('/radio_station', 'RadioStationController@getAll')->name('radio_station_get_all');
