@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
 	public function run()
 	{
 		// Webサイト
-		$this->call(ProgramsTableSeeder::class);
-		$this->call(PopularProgramsTableSeeder::class);
-		$this->call(PerformersTableSeeder::class);
+//		$this->call(ProgramsTableSeeder::class);
+//		$this->call(PopularProgramsTableSeeder::class);
+//		$this->call(PerformersTableSeeder::class);
 
 		// リアルタイムチャット
 		$this->call(ChatsTableSeeder::class);
