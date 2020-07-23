@@ -12,6 +12,7 @@ $factory->define(Radio::class, function (Faker $faker) {
 		'title' => $faker->randomElement(),
 		'body' => $faker->randomElement(),
 		'day_of_week' => $faker->randomNumber(),
+		'performer' => $faker->name(),
 		'on_air_start_time' => $faker->time(),
 		'on_air_end_time' => $faker->time(),
 		'is_main_air' => true,

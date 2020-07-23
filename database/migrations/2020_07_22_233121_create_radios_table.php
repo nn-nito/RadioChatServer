@@ -19,6 +19,7 @@ class CreateRadiosTable extends Migration
 			$table->string('title')->comment('タイトル');
 			$table->string('body')->comment('簡単な説明');
 			$table->integer('day_of_week')->comment('曜日 0~6 日からスタート');
+			$table->string('performer')->comment('出演者');
 			$table->time('on_air_start_time')->comment('放送開始時間');
 			$table->time('on_air_end_time')->comment('放送終了時間');
 			$table->boolean('is_main_air')->comment('本放送かどうか');
