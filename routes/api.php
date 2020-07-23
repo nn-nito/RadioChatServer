@@ -22,3 +22,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/chat', 'ChatController@write')->name('chat_write');
 // チャット取得
 Route::get('/chat', 'ChatController@get')->name('chat_get');
+// 放送中のラジオすべて取得
+Route::get('/on_air', 'OnAirController@getAll')->name('on_air_get_all');
