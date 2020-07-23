@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
 
 // チャット書き込み
@@ -24,3 +24,5 @@ Route::post('/chat', 'ChatController@write')->name('chat_write');
 Route::get('/chat', 'ChatController@get')->name('chat_get');
 // 放送中のラジオすべて取得
 Route::get('/on_air', 'OnAirController@getAll')->name('on_air_get_all');
+// ラジオを検索し取得
+Route::get('search', 'SearchController@get')->name('search_radio');

@@ -37,6 +37,36 @@ class RadioHandler
 
 
 	/**
+	 * ラジオ局IDで昇順にソートしたラジオをすべて取得
+	 *
+	 * @return Builder[]|Collection
+	 */
+	public function fetchAllOrderByRadioStationId()
+	{
+		return $this->radio::query()
+			->orderBy('radio_station_id', 'ASC')
+			->get();
+	}
+
+
+
+	/**
+	 * ラジオ局IDで昇順にソートしたラジオをすべて取得
+	 *
+	 * @param string $title タイトル
+	 * @return Builder[]|Collection
+	 */
+	public function fetchAllByLikeTitleOrderByRadioStationId(string $title)
+	{
+		return $this->radio::query()
+			->where('title', 'LIKE', '%' . $title . '%')
+			->orderBy('radio_station_id', 'ASC')
+			->get();
+	}
+
+
+
+	/**
 	 * 曜日と現在時間で現在放送中のラジオをすべて取得
 	 *
 	 * @param int    $day_of_week  曜日 0(日)~6(土)

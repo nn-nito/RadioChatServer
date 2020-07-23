@@ -9,8 +9,8 @@
 namespace App\Http\Services\Radio;
 
 use App\Http\Handlers\RadioHandler;
-use Illuminate\Support\Collection;
-use PhpParser\Builder;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 /**
  * ラジオ取得
@@ -41,6 +41,24 @@ class RadioFetcher
 	public function __construct(RadioHandler $radio_handler)
 	{
 		$this->radio_handler = $radio_handler;
+	}
+
+
+
+	/**
+	 * @param string $title
+	 * @return Builder[]|Collection
+	 */
+	public function searchAllRadioByTitle(string $title)
+	{
+		if ('' === $title) {
+			// タイトルが空の場合
+			// ラジオ局IDで昇順にソートしたすべてのラジオを取得
+			return $this->radio_handler->fetchAllOrderByRadioStationId();
+		}
+
+		// ラジオ局IDで昇順にソートしタイトルでフィルタリングしたすべてのラジオを取得
+		return $this->radio_handler->fetchAllByLikeTitleOrderByRadioStationId($title);
 	}
 
 
