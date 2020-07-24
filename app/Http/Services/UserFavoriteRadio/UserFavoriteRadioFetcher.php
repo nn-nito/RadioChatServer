@@ -58,4 +58,17 @@ class UserFavoriteRadioFetcher
 	{
 		return $this->user_favorite_radio_handler->fetchAllJoinedAndSortedRadioByUserId($user_id);
 	}
+
+
+
+	/**
+	 * ユーザーIDに紐づくお気に入りのラジオを取得
+	 *
+	 * @param int $user_id ユーザーID
+	 * @return Builder[]|Collection
+	 */
+	public function fetchAllByUserId(int $user_id)
+	{
+		return $this->user_favorite_radio_handler->fetchAllByUserId($user_id);
+	}
 }

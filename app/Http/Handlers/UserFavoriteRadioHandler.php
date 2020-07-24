@@ -87,4 +87,19 @@ class UserFavoriteRadioHandler
 			->where('radio_id', $radio_id)
 			->delete();
 	}
+
+
+
+	/**
+	 * ユーザーIDに紐づくお気に入りのラジオを取得
+	 *
+	 * @param int $user_id ユーザーID
+	 * @return Builder[]|Collection
+	 */
+	public function fetchAllByUserId(int $user_id)
+	{
+		return $this->user_favorite_radio::query()
+			->where('user_id', $user_id)
+			->get();
+	}
 }

@@ -23,6 +23,7 @@ class UserFavoriteRadioController extends Controller
 	{
 		$user_id = $request->get('user_id');
 
+		// お気に入りのラジオ
 		$responses = UserFavoriteRadioFetcher::create()->fetchAllJoinedAndSortedRadioByUserId($user_id);
 
 		return response()->json($responses);

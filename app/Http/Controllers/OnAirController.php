@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Services\Radio\RadioFetcher;
+use App\Http\Services\UserFavoriteRadio\UserFavoriteRadioFetcher;
 use Carbon\Carbon;
 use DateTime;
 use Exception;
@@ -24,13 +25,16 @@ class OnAirController extends Controller
 	 */
     public function getAll(Request $request): JsonResponse
 	{
+		$user_id = $request->get('user_id');
 		$day_of_week = $request->get('day_of_week');
 		$current_time = $request->get('current_time');
 		$time = (new DateTime($current_time))->format('H:i:s');
 
-		$radio_fetcher = RadioFetcher::create();
+		$responses = [];
 		// 現在放送中のラジオをすべて取得
-		$responses = $radio_fetcher->fetchAllNowOnAirByDayOfWeekAndCurrentTime($day_of_week, $time);
+		$responses['radios'] = RadioFetcher::create()->fetchAllNowOnAirByDayOfWeekAndCurrentTime($day_of_week, $time);
+		// お気に入りに登録しているラジオすべて取得
+		$responses['user_favorite_radios'] = UserFavoriteRadioFetcher::create()->fetchAllByUserId($user_id);
 
 		return response()->json($responses);
 	}
