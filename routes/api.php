@@ -29,4 +29,8 @@ Route::get('search', 'SearchController@get')->name('search_radio');
 // ラジオ局すべて取得
 Route::get('/radio_station', 'RadioStationController@getAll')->name('radio_station_get_all');
 // お気に入りのラジオすべて取得
-Route::get('/user_favorite_radios', 'UserFavoriteRadioController@userFavoriteRadios')->name('user_favorite_radios');
+Route::get('/user_favorite_radio', 'UserFavoriteRadioController@userFavoriteRadios')->name('user_favorite_radios');
+// お気に入りのラジオ追加
+Route::post('/user_favorite_radio', 'UserFavoriteRadioController@create')->name('user_favorite_radio_create');
+// お気に入りのラジオ削除
+Route::post('/user_favorite_radio/delete', 'UserFavoriteRadioController@delete')->name('user_favorite_radio_delete');
