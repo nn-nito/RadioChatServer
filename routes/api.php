@@ -26,6 +26,8 @@ Route::post('/user/update', 'UserUpdateController@update')->name('user_update');
 Route::post('/chat', 'ChatController@write')->name('chat_write');
 // チャット取得
 Route::get('/chat', 'ChatController@get')->name('chat_get');
+// チャットすべて取得
+Route::get('/chat/all', 'ChatController@getAll')->name('chat_get_all');
 // 放送中のラジオすべて取得
 Route::get('/on_air', 'OnAirController@getAll')->name('on_air_get_all');
 // ラジオを検索し取得

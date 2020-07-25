@@ -89,4 +89,19 @@ class ChatHandler
 			->where('time_sent', '>', $date_time)
 			->get();
 	}
+
+
+
+	/**
+	 * 指定したルームのチャットすべて取得
+	 *
+	 * @param int $room_id ルームID
+	 * @return Builder[]|Collection
+	 */
+	public function fetchAllByRoomId(int $room_id)
+	{
+		return $this->chat::query()
+			->where('room_id', $room_id)
+			->get();
+	}
 }

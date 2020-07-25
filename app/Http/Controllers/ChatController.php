@@ -55,13 +55,30 @@ class ChatController extends Controller
 	 */
 	public function get(Request $request): JsonResponse
 	{
-		$params = [];
-		$params['user_id'] = $request->get('user_id');
-		$params['room_id'] = $request->get('room_id');
-		$params['time_sent'] = new DateTime($request->get('time_sent'));
+		$room_id = $request->get('room_id');
+		$time_sent = new DateTime($request->get('time_sent'));
 
 		// ルームの指定時間以降のチャットすべて取得
-		$responses = ChatFetcher::create()->execute($params);
+		$responses = ChatFetcher::create()->fetchAllByRoomIdAfterTime($room_id, $time_sent);
+
+		return response()->json($responses);
+	}
+
+
+
+	/**
+	 * チャットをすべて取得
+	 *
+	 * @param Request $request
+	 * @return JsonResponse
+	 * @throws Exception
+	 */
+	public function getAll(Request $request): JsonResponse
+	{
+		$room_id = $request->get('room_id');
+
+		// ルームの指定時間以降のチャットすべて取得
+		$responses = ChatFetcher::create()->fetchAllByRoomId($room_id);
 
 		return response()->json($responses);
 	}
