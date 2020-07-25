@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 //		$this->call(PerformersTableSeeder::class);
 
 		// リアルタイムチャット
+		$this->call(UsersTableSeeder::class);
 		$this->call(ChatsTableSeeder::class);
 		$this->call(RadiosTableSeeder::class);
 		$this->call(RadioStationsTableSeeder::class);

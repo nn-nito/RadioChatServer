@@ -18,6 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 	return $request->user();
 });
 
+// ユーザー登録
+Route::post('/user', 'UserSignUpController@signUp')->name('sign_up');
+// ユーザー更新
+Route::post('/user/update', 'UserUpdateController@update')->name('user_update');
 // チャット書き込み
 Route::post('/chat', 'ChatController@write')->name('chat_write');
 // チャット取得
