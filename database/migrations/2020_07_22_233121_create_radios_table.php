@@ -15,6 +15,7 @@ class CreateRadiosTable extends Migration
 	{
 		Schema::create('radios', function (Blueprint $table) {
 			$table->id();
+			$table->integer('room_id')->comment('部屋ID');
 			$table->integer('same_id')->comment('同一のラジオを紐づける為のID');
 			$table->string('title')->comment('タイトル');
 			$table->string('title_kana')->comment('カナのタイトル');
@@ -26,6 +27,7 @@ class CreateRadiosTable extends Migration
 			$table->time('on_air_end_time')->comment('放送終了時間');
 			$table->boolean('is_main_air')->comment('本放送かどうか');
 			$table->integer('display_order')->comment('表示順');
+			$table->boolean('is_irregular')->default(false)->comment('不規則かどうか');
 			$table->timestamps();
 		});
 	}

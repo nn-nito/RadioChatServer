@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factory;
 
 $factory->define(Radio::class, function (Faker $faker) {
     return [
+    	'room_id' => $faker->randomNumber(),
         'same_id' => $faker->randomNumber(),
 		'title' => $faker->randomElement(),
 		'title_kana' => $faker->randomElement(),

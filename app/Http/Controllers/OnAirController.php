@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\IrregularRadio\IrregularRadioFetcher;
 use App\Http\Services\Radio\RadioFetcher;
 use App\Http\Services\UserFavoriteRadio\UserFavoriteRadioFetcher;
 use Carbon\Carbon;
@@ -28,13 +29,16 @@ class OnAirController extends Controller
 		$user_id = $request->get('user_id');
 		$day_of_week = $request->get('day_of_week');
 		$current_time = $request->get('current_time');
-		$time = (new DateTime($current_time))->format('H:i:s');
+		$date_time = new DateTime($current_time);
+		$time = $date_time->format('H:i:s');
 
 		$responses = [];
 		// 現在放送中のラジオをすべて取得
 		$responses['radios'] = RadioFetcher::create()->fetchAllNowOnAirByDayOfWeekAndCurrentTime($day_of_week, $time);
 		// お気に入りに登録しているラジオすべて取得
 		$responses['user_favorite_radios'] = UserFavoriteRadioFetcher::create()->fetchAllByUserId($user_id);
+		// 現在放送中であろう不規則なラジオをすべて取得
+		$responses['irregular_radios'] = IrregularRadioFetcher::create()->fetchAllIrregularRadioByDayOfWeekAndCurrentTime($day_of_week, $current_time);
 
 		return response()->json($responses);
 	}

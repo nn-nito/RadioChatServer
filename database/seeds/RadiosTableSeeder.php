@@ -15,6 +15,7 @@ class RadiosTableSeeder extends Seeder
     {
 		$radios = [
 			[
+				'room_id' => 1,
 				'same_id' => 1,
 				'title' => '小原好美のココロおきなく',
 				'title_kana' => 'こはらこのみのこころおきなく',
@@ -28,6 +29,7 @@ class RadiosTableSeeder extends Seeder
 				'display_order' => 2,
 			],
 			[
+				'room_id' => 2,
 				'same_id' => 2,
 				'title' => '田中美海のかもん！みなはうす♫',
 				'title_kana' => 'たなかみなみのかもん！みなはうす♫',
@@ -41,6 +43,7 @@ class RadiosTableSeeder extends Seeder
 				'display_order' => 1,
 			],
 			[
+				'room_id' => 3,
 				'same_id' => 3,
 				'title' => '本渡楓と天津向の 「本渡上陸作戦」',
 				'title_kana' => 'ほんどかえでとてんしんむかいの 「ほんどじょうりくさくせん」',
@@ -54,6 +57,7 @@ class RadiosTableSeeder extends Seeder
 				'display_order' => 4,
 			],
 			[
+				'room_id' => 4,
 				'same_id' => 4,
 				'title' => 'ああああああああああ',
 				'title_kana' => 'ああああああああああ',
@@ -73,6 +77,7 @@ class RadiosTableSeeder extends Seeder
 		DB::statement("ALTER TABLE radios AUTO_INCREMENT = 1;");
 		foreach ($radios as $radio) {
 			$table->insert([
+				'room_id' => $radio['room_id'],
 				'same_id' => $radio['same_id'],
 				'title' => $radio['title'],
 				'title_kana' => $radio['title_kana'],
@@ -84,6 +89,7 @@ class RadiosTableSeeder extends Seeder
 				'on_air_end_time' => $radio['on_air_end_time'],
 				'is_main_air' => $radio['is_main_air'],
 				'display_order' => $radio['display_order'],
+				'is_irregular' => $radio['is_irregular'] ?? false,
 				'created_at' => Carbon::now(),
 				'updated_at' => Carbon::now(),
 			]);
