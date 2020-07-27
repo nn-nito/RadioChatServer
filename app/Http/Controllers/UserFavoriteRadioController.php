@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\IrregularRadio\IrregularRadioFetcher;
 use App\Http\Services\UserFavoriteRadio\UserFavoriteRadioCreator;
 use App\Http\Services\UserFavoriteRadio\UserFavoriteRadioDeleter;
 use App\Http\Services\UserFavoriteRadio\UserFavoriteRadioFetcher;
@@ -22,9 +23,13 @@ class UserFavoriteRadioController extends Controller
 	public function userFavoriteRadios(Request $request): JsonResponse
 	{
 		$user_id = $request->get('user_id');
+		$first_day_of_week = $request->get('first_day_of_week');
+		$last_day_of_week = $request->get('last_day_of_week');
 
 		// お気に入りのラジオ
-		$responses = UserFavoriteRadioFetcher::create()->fetchAllJoinedAndSortedRadioByUserId($user_id);
+		$responses['user_favorite_radios'] = UserFavoriteRadioFetcher::create()->fetchAllJoinedAndSortedRadioByUserId($user_id);
+		// 今週放送するであろう不規則なラジオをすべて取得
+		$responses['irregular_radios'] = IrregularRadioFetcher::create()->fetchAllIrregularRadioByRandStartTime($first_day_of_week, $last_day_of_week);
 
 		return response()->json($responses);
 	}
