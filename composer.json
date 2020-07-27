@@ -13,6 +13,7 @@
         "fruitcake/laravel-cors": "^1.0",
         "genealabs/laravel-model-caching": "^0.9.0",
         "guzzlehttp/guzzle": "^6.3",
+        "itsgoingd/clockwork": "^4.1",
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "league/flysystem-aws-s3-v3": "^1.0"

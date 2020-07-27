@@ -8,7 +8,5 @@ class Chat extends BaseModel
 {
 	protected $cachePrefix = "chat";
 
-	protected $cacheCooldownSeconds = 1800;
-
 	protected $guarded = [];
 }
