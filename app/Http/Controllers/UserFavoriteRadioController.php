@@ -6,8 +6,10 @@ use App\Http\Services\IrregularRadio\IrregularRadioFetcher;
 use App\Http\Services\UserFavoriteRadio\UserFavoriteRadioCreator;
 use App\Http\Services\UserFavoriteRadio\UserFavoriteRadioDeleter;
 use App\Http\Services\UserFavoriteRadio\UserFavoriteRadioFetcher;
+use Clockwork\Request\Log;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Symfony\Component\ErrorHandler\Debug;
 
 /**
  * お気に入りのラジオやり取り
@@ -25,9 +27,10 @@ class UserFavoriteRadioController extends Controller
 		$user_id = $request->get('user_id');
 		$first_day_of_week = $request->get('first_day_of_week');
 		$last_day_of_week = $request->get('last_day_of_week');
-
+		
+		$responses = [];
 		// お気に入りのラジオ
-		$responses['user_favorite_radios'] = UserFavoriteRadioFetcher::create()->fetchAllJoinedAndSortedRadioByUserId($user_id);
+		$responses['radios'] = UserFavoriteRadioFetcher::create()->fetchAllJoinedAndSortedRadioByUserId($user_id);
 		// 今週放送するであろう不規則なラジオをすべて取得
 		$responses['irregular_radios'] = IrregularRadioFetcher::create()->fetchAllIrregularRadioByRandStartTime($first_day_of_week, $last_day_of_week);
 

@@ -64,8 +64,8 @@ class IrregularRadioHandler
 	public function fetchAllIrregularRadioByRandStartTime(string $start_time, string $end_time)
 	{
 		return $this->irregular_radio::query()
-			->where('on_air_start_time', '<=', $start_time)
 			->where('on_air_start_time', '>=', $start_time)
+			->where('on_air_start_time', '<=', $end_time)
 			->get();
 	}
 }
