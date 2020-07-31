@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
 		$this->call(RadioStationsTableSeeder::class);
 		$this->call(UserFavoriteRadiosTableSeeder::class);
 		$this->call(IrregularRadiosTableSeeder::class);
+		$this->call(MessageSeeder::class);
+		$this->call(AppVersionSeeder::class);
 	}
 }
