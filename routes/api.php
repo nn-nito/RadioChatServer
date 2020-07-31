@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-	return $request->user();
+Route::group(['middleware' => 'version'], function () {
+	// サーバーチェック
+	Route::get('/check', 'ServerCheckController@check')->name('check');
 });
-
 // ユーザー登録
 Route::post('/user', 'UserSignUpController@signUp')->name('sign_up');
 // ユーザー更新

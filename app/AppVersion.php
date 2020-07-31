@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Http\BaseModel;
 
-class AppVersion extends Model
+class AppVersion extends BaseModel
 {
 	protected $primaryKey = ['version', 'platform_id'];
 
