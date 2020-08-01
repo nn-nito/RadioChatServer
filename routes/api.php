@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'version'], function () {
-	// サーバーチェック
-	Route::get('/check', 'ServerCheckController@check')->name('check');
-});
+//Route::group(['middleware' => 'version'], function () {
+//	// サーバーチェック
+//	Route::get('/check', 'ServerCheckController@check')->name('check');
+//});
+Route::get('/check', 'ServerCheckController@check')->name('check')->middleware('version');
 // ユーザー登録
 Route::post('/user', 'UserSignUpController@signUp')->name('sign_up');
 // ユーザー更新

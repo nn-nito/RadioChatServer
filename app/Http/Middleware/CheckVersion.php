@@ -23,12 +23,11 @@ class CheckVersion
 
 		// アプリが最新かどうか
 		// 引っ張ってこれたら最新
-		$app_version = (new AppVersionHandler())->fetchAppByPrimaryKey($version, $platform_id);
-		if (is_null($app_version)) {
-			// 最新ではないのでメッセージを返す
-			$message = (new MessageHandler())->fetchMessageByKey('SYSTEM.NOT_APP_LATEST');
+		$app_version = (new AppVersionHandler())->fetchLatestByPlatformId($platform_id);
 
-			return ['message' => $message];
+		if (false === is_null($app_version) and $version !== $app_version->version) {
+			// 最新ではないのでバージョン情報を返す
+			return response()->json($app_version);
 		}
 
 		return $next($request);

@@ -38,7 +38,7 @@ class CheckForMaintenanceMode extends Middleware
 			// メンテメッセージを返す
 			$message = (new MessageHandler())->fetchMessageByKey('SYSTEM.MAINTENANCE');
 
-			return ['message' => $message];
+			return response()->json($message);
 		}
 
 		return $next($request);

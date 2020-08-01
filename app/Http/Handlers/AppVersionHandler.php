@@ -37,6 +37,22 @@ class AppVersionHandler
 
 
 	/**
+	 * 指定したプラットフォームの最新バージョンを取得
+	 *
+	 * @param int $platform_id
+	 * @return Builder|Model|object|null
+	 */
+	public function fetchLatestByPlatformId(int $platform_id)
+	{
+		return $this->app_version::query()
+			->where('platform_id', $platform_id)
+			->orderByDesc('id')
+			->first();
+	}
+
+
+
+	/**
 	 * 指定した条件に紐づくアプリのバージョンを取得
 	 *
 	 * @param string $version
