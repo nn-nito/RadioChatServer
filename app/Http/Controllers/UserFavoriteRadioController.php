@@ -70,6 +70,8 @@ class UserFavoriteRadioController extends Controller
 
 		$response = UserFavoriteRadioDeleter::create()->delete($user_id, $radio_id);
 
-		return response()->json([$response]);
+		return response()->json([
+			'is_succeeded' => $response,
+		]);
 	}
 }
