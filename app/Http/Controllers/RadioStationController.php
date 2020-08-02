@@ -20,6 +20,8 @@ class RadioStationController extends Controller
 	{
 		$responses = RadioStationFetcher::create()->fetchAll();
 
-		return response()->json($responses);
+		return response()->json([
+			'radio_stations' => $responses,
+		]);
 	}
 }

@@ -41,7 +41,9 @@ class ChatController extends Controller
 			throw new $exception;
 		}
 
-		return response()->json($response);
+		return response()->json([
+			'chat' => $response,
+		]);
 	}
 
 
@@ -61,7 +63,9 @@ class ChatController extends Controller
 		// ルームの指定時間以降のチャットすべて取得
 		$responses = ChatFetcher::create()->fetchAllByRoomIdAfterTime($room_id, $time_sent);
 
-		return response()->json($responses);
+		return response()->json([
+			'chats' => $responses,
+		]);
 	}
 
 
@@ -80,6 +84,8 @@ class ChatController extends Controller
 		// ルームの指定時間以降のチャットすべて取得
 		$responses = ChatFetcher::create()->fetchAllByRoomId($room_id);
 
-		return response()->json($responses);
+		return response()->json([
+			'chats' => $responses,
+		]);
 	}
 }
