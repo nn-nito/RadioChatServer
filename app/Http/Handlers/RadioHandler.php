@@ -45,6 +45,9 @@ class RadioHandler
 	{
 		return $this->radio::query()
 			->orderBy('radio_station_id', 'ASC')
+			->orderBy('day_of_week', 'ASC')
+			->orderBy('on_air_start_time', 'ASC')
+			->orderBy('display_order', 'DESC')
 			->get();
 	}
 
@@ -61,6 +64,9 @@ class RadioHandler
 		return $this->radio::query()
 			->where('title', 'LIKE', '%' . $title . '%')
 			->orderBy('radio_station_id', 'ASC')
+			->orderBy('day_of_week', 'ASC')
+			->orderBy('on_air_start_time', 'ASC')
+			->orderBy('display_order', 'DESC')
 			->get();
 	}
 
@@ -79,6 +85,9 @@ class RadioHandler
 			->where('day_of_week', $day_of_week)
 			->where('on_air_start_time', '<=', $current_time)
 			->where('on_air_end_time', '>=', $current_time)
+			->orderBy('radio_station_id', 'ASC')
+			->orderBy('day_of_week', 'ASC')
+			->orderBy('on_air_start_time', 'ASC')
 			->orderBy('display_order', 'DESC')
 			->get();
 	}

@@ -26,7 +26,7 @@ class UserCreator
 	/**
 	 * @var string
 	 */
-	private const BASE_NAME = "ペンネーム";
+	private const BASE_NAME = "ユーザ";
 
 	/**
 	 * @var UserHandler
@@ -69,7 +69,7 @@ class UserCreator
 	public function insert(DateTime $registered_time)
 	{
 		// 名前生成
-		$name = self::BASE_NAME . (string)RandomCode::generateIntCode(100, 9999999);
+		$name = self::BASE_NAME . (string)RandomCode::generateIntCode(0, 9999999);
 		// ユーザーコード生成
 		$user_code = (string)Str::uuid();
 		// 認証コード生成
