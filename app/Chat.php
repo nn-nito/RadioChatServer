@@ -2,11 +2,9 @@
 
 namespace App;
 
-use App\Http\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 
-class Chat extends BaseModel
+class Chat extends Model
 {
-	protected $cachePrefix = "chat";
-
 	protected $guarded = [];
 }

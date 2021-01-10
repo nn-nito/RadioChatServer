@@ -2,11 +2,9 @@
 
 namespace App;
 
-use App\Http\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 
-class IrregularRadio extends BaseModel
+class IrregularRadio extends Model
 {
-	protected $cachePrefix = "irregular_radio";
-
 	protected $guarded = [];
 }

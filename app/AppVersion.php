@@ -2,9 +2,9 @@
 
 namespace App;
 
-use App\Http\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 
-class AppVersion extends BaseModel
+class AppVersion extends Model
 {
 	protected $guarded = [];
 }

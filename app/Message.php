@@ -2,9 +2,9 @@
 
 namespace App;
 
-use App\Http\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 
-class Message extends BaseModel
+class Message extends Model
 {
 	protected $primaryKey = 'key';
 
