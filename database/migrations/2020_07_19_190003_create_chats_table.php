@@ -19,7 +19,7 @@ class CreateChatsTable extends Migration
 			$table->string('user_name')->comment('ユーザー名');
 			$table->unsignedInteger('room_id')->comment('ルームID');
 			$table->string('message')->comment('メッセージ');
-			$table->dateTime('time_sent')->comment('送った時間');
+			$table->dateTime('time_sent', 3)->comment('送った時間');
 			$table->timestamps();
 			$table->index(['room_id', 'time_sent']);
 		});

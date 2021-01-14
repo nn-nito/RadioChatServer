@@ -56,7 +56,7 @@ class ChatHandler
 				'user_name' => $user_name,
 				'room_id' => $room_id,
 				'message' => $message,
-				'time_sent' => $time_sent,
+				'time_sent' => $time_sent->format("Y-m-d H:i:s.v"),
 			]);
 	}
 
@@ -76,17 +76,21 @@ class ChatHandler
 
 
 	/**
-	 * ルームの指定時間以降のチャットすべて取得
+	 * 指定したルームで前に取得した日時から現在の指定時間の間のチャットすべて取得
 	 *
+	 * @param int $user_id ユーザーID
 	 * @param int      $room_id ルームID
+	 * @param DateTime $before_date_time 前に取得した投稿日時
 	 * @param DateTime $date_time
 	 * @return Builder[]|Collection
 	 */
-	public function fetchAllByRoomIdAfterTime(int $room_id, DateTime $date_time)
+	public function fetchAllByRoomIdAfterTime(int $user_id, int $room_id, DateTime $before_date_time, DateTime $date_time)
 	{
 		return $this->chat::query()
 			->where('room_id', $room_id)
-			->where('time_sent', '>', $date_time)
+			->where('time_sent', '>', $before_date_time->format("Y-m-d H:i:s.v"))
+			->where('time_sent', '<=', $date_time->format("Y-m-d H:i:s.v"))
+			->where('user_id', '!=', $user_id)
 			->get();
 	}
 
