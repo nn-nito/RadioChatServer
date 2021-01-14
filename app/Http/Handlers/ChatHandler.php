@@ -87,10 +87,11 @@ class ChatHandler
 	public function fetchAllByRoomIdAfterTime(int $user_id, int $room_id, DateTime $before_date_time, DateTime $date_time)
 	{
 		return $this->chat::query()
+			->where('user_id', '!=', $user_id)
 			->where('room_id', $room_id)
 			->where('time_sent', '>', $before_date_time->format("Y-m-d H:i:s.v"))
 			->where('time_sent', '<=', $date_time->format("Y-m-d H:i:s.v"))
-			->where('user_id', '!=', $user_id)
+			->orderBy('time_sent', 'ASC')
 			->get();
 	}
 
@@ -106,6 +107,7 @@ class ChatHandler
 	{
 		return $this->chat::query()
 			->where('room_id', $room_id)
+			->orderBy('time_sent', 'ASC')
 			->get();
 	}
 }
