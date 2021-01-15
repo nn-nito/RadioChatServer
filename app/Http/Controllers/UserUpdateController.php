@@ -6,7 +6,6 @@ use App\Http\Services\User\UserUpdater;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 /**
  * ユーザー更新
@@ -24,7 +23,6 @@ class UserUpdateController extends Controller
 		$user_id = $request->post('id');
 		$name = $request->post('name');
 		$authentication_code = $request->post('authentication_code');
-		Log::info(sprintf('user_id=%s name=%s auth=%s', $user_id, $name, $authentication_code));
 
 		DB::beginTransaction();
 		try {
