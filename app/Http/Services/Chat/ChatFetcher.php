@@ -59,8 +59,7 @@ class ChatFetcher
 	 */
 	public function fetchAllByRoomIdAfterTime(int $user_id, int $room_id, ?DateTime $before_time_sent, DateTime $time_sent)
 	{
-		if (is_null($before_time_sent))
-		{
+		if (is_null($before_time_sent)) {
 			// 前に取得した時間が空の場合は指定時間以降のデータ取得
 			return $this->chat_handler->fetchAllByRoomIdAfterTime($room_id, $time_sent);
 		}

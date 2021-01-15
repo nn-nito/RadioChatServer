@@ -64,7 +64,9 @@ class ChatController extends Controller
 		if (is_null($before_time_sent) or '' === $before_time_sent) {
 			$before_time_sent = null;
 		}
-		$before_time_sent = $before_time_sent ?? new DateTime($request->get('before_time_sent'));
+		if (false === is_null($before_time_sent)) {
+			$before_time_sent = new DateTime($before_time_sent);
+		}
 
 		// 指定したルームで前に取得した日時から現在の指定時間の間のチャットすべて取得 自身(user)は除外
 		$responses = ChatFetcher::create()->fetchAllByRoomIdAfterTime($user_id, $room_id, $before_time_sent, $time_sent);
