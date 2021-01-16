@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('home');
-//});
+Route::get('/', function () {
+    return 'Hello I am AnimeRadioChat';
+});
 //
 //Route::get('/home', 'HomeController@index')->name('home');
