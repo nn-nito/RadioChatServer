@@ -6,6 +6,7 @@ use App\Http\Handlers\ChatHandler;
 use App\Http\Handlers\RadioHandler;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class RegularChatDeletionCommand extends Command
 {
@@ -59,6 +60,7 @@ class RegularChatDeletionCommand extends Command
 				$room_id_list[] = $deletion_target_radio->room_id;
 			}
 
+			$deletion_count = 0;
 			if (0 < $room_id_list) {
 				// そのルームIDにヒットするチャットを全削除
 				$deletion_count = (new ChatHandler())->deleteByRoomId($room_id_list);
@@ -68,6 +70,8 @@ class RegularChatDeletionCommand extends Command
 			DB::rollBack();
 		}
 
+		Log::info('バッチ実行 削除件数', ['count' => $deletion_count]);
+		
 		return 0;
 	}
 }
