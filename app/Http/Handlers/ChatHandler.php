@@ -116,8 +116,8 @@ class ChatHandler
 	/**
 	 * 自分以外の指定したルームのチャットすべて取得
 	 *
-	 * @param int      $user_id ユーザーID
-	 * @param int      $room_id ルームID
+	 * @param int $user_id ユーザーID
+	 * @param int $room_id ルームID
 	 * @return Builder[]|Collection
 	 */
 	public function fetchAllByRoomExceptUserId(int $user_id, int $room_id)
@@ -127,5 +127,20 @@ class ChatHandler
 			->where('room_id', $room_id)
 			->orderBy('time_sent', 'ASC')
 			->get();
+	}
+
+
+
+	/**
+	 * 指定したルームに紐づくチャットすべて削除
+	 *
+	 * @param array $room_ids ルームIDS
+	 * @return int 削除件数
+	 */
+	public function deleteByRoomId(array $room_ids): int
+	{
+		return $this->chat::query()
+			->whereIn('room_id', $room_ids)
+			->delete();
 	}
 }

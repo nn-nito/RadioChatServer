@@ -91,4 +91,19 @@ class RadioHandler
 			->orderBy('display_order', 'DESC')
 			->get();
 	}
+
+
+
+	/**
+	 * 曜日に紐づくラジオすべて取得
+	 *
+	 * @param int $day_of_week 曜日
+	 * @return Builder[]|Collection
+	 */
+	public function fetchAllByDayOfWeek(int $day_of_week)
+	{
+		return $this->radio::query()
+			->where('day_of_week', $day_of_week)
+			->get();
+	}
 }
