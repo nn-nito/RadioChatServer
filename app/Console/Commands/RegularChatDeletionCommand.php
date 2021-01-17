@@ -71,7 +71,7 @@ class RegularChatDeletionCommand extends Command
 		}
 
 		Log::info('バッチ実行 削除件数', ['count' => $deletion_count]);
-		
+
 		return 0;
 	}
 }

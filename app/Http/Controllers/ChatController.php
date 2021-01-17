@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Chat;
 use App\Http\Services\Chat\ChatCreator;
 use App\Http\Services\Chat\ChatFetcher;
+use App\NGWord;
 use DateTime;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -30,6 +32,11 @@ class ChatController extends Controller
 		$params['room_id'] = $request->post('room_id');
 		$params['message'] = $request->post('message');
 		$params['time_sent'] = new DateTime($request->post('time_sent'));
+
+		$is_validation_result = $this->validateChatMessage($params['message']);
+		if (false === $is_validation_result) {
+			return response()->json(['chat' => []]);
+		}
 
 		DB::beginTransaction();
 		try {
@@ -95,5 +102,34 @@ class ChatController extends Controller
 		return response()->json([
 			'chats' => $responses,
 		]);
+	}
+
+
+
+	/**
+	 * チャットのメッセージの検証
+	 *
+	 * @param string|null $message
+	 * @return bool true:成功 false:失敗
+	 */
+	private function validateChatMessage(?string $message): bool
+	{
+		if (is_null($message)) {
+			return false;
+		}
+
+		if ('' === $message) {
+			return false;
+		}
+
+		if (mb_strlen($message) > 50) {
+			return false;
+		}
+
+		if (false === NGWord::check($message)) {
+			return false;
+		}
+
+		return true;
 	}
 }
