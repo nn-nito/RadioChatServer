@@ -19,6 +19,7 @@ class CreateUsersTable extends Migration
 			$table->dateTime('registered_time')->comment('登録した日時');
 			$table->string('user_code')->comment('ユーザーコード');
 			$table->string('authentication_code')->comment('認証コード');
+			$table->integer('ban_count')->default(0)->comment('バン忠告回数');
 			$table->timestamps();
 		});
 	}

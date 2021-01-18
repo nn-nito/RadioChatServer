@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Chat;
+use App\Http\Handlers\UserHandler;
 use App\Http\Services\Chat\ChatCreator;
 use App\Http\Services\Chat\ChatFetcher;
 use App\NGWord;
@@ -11,12 +12,15 @@ use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use phpDocumentor\Reflection\Types\Self_;
 
 /**
  * チャットをやり取りする
  */
 class ChatController extends Controller
 {
+	private const BAN = 5;
+
 	/**
 	 * チャットを受け取りDBに格納
 	 *
@@ -35,6 +39,15 @@ class ChatController extends Controller
 
 		$is_validation_result = $this->validateChatMessage($params['message']);
 		if (false === $is_validation_result) {
+			return response()->json(['chat' => []]);
+		}
+
+		$user = (new UserHandler())->fetchById($params['user_id']);
+		if (is_null($user)) {
+			return response()->json(['chat' => []]);
+		}
+		if ($user->ban_count >= self::BAN) {
+			// バン回数が閾値以上だった場合チャット書き込みができない
 			return response()->json(['chat' => []]);
 		}
 

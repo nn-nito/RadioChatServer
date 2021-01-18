@@ -76,4 +76,19 @@ class UserHandler
 				'name' => $name,
 			]);
 	}
+
+
+
+	/**
+	 * ユーザーIDに紐づくユーザーを一件取得
+	 *
+	 * @param int $user_id ユーザーID
+	 * @return Builder|Model|object|null
+	 */
+	public function fetchById(int $user_id)
+	{
+		return $this->user::query()
+			->where('id', $user_id)
+			->first();
+	}
 }
