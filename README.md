@@ -9,6 +9,8 @@
 
 ## 画面
 
-![ダミー_タイトル](https://user-images.githubusercontent.com/50411820/194242296-a14fadf2-8e94-45f4-8490-37d3d6ece27d.png)
-![ダミー_検索](https://user-images.githubusercontent.com/50411820/194242320-18abcc63-d321-4010-a1d9-e3d4329e6957.png)
-![ダミー_スケジュール](https://user-images.githubusercontent.com/50411820/194242330-c647d01c-b35c-45a3-8876-60c818705dee.png)
+![ダミー_タイトル](https://user-images.githubusercontent.com/50411820/194245194-85498972-eeb9-40a9-a16a-f797a8167551.png)
+![ダミー_チャット](https://user-images.githubusercontent.com/50411820/194245220-208030d4-400f-4f1e-924c-934644ebbcc4.png)
+![ダミー_マイページ](https://user-images.githubusercontent.com/50411820/194245261-76ebea08-f9db-429f-81c9-5ce233d18e30.png)
+![ダミー_検索](https://user-images.githubusercontent.com/50411820/194245281-3224bf36-c3a4-4deb-bf38-7cebf53d3223.png)
+![ダミー_放送中](https://user-images.githubusercontent.com/50411820/194245293-888ccee7-98e5-4c7d-a02d-4793814e63ce.png)
